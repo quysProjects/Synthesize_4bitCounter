@@ -1,0 +1,73 @@
+xrun(64): 20.09-s001: (c) Copyright 1995-2020 Cadence Design Systems, Inc.
+xrun: *W,FMDEF: The default file type mapping of .sv is being overwritten.
+TOOL:	xrun(64)	20.09-s001: Started on May 26, 2024 at 11:30:00 EDT
+xrun
+	-gui
+	+xm64bit
+	-sv
+	-vlogext .sv
+	-f 00_src/flist.f
+		00_src/full_adder.sv
+		00_src/ripple_adder.sv
+		00_src/counter.sv
+		00_src/synth_wrapper.sv
+		00_src/mux2by1.sv
+		00_src/mux2by1_4bit.sv
+	01_tb/counter_tb.sv
+	-timescale 1ns/10ps
+	+access+rcw
+Recompiling... reason: file './00_src/counter.sv' is newer than expected.
+	expected: Sun May 26 11:02:10 2024
+	actual:   Sun May 26 11:29:00 2024
+file: 01_tb/counter_tb.sv
+	module worklib.counter_tb:sv
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		counter_tb
+xmelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.mux2by1:sv <0x526be156>
+			streams:   1, words:   172
+		worklib.mux2by1_4bit:sv <0x2159824b>
+			streams:   4, words:  1706
+		worklib.ripple_adder:sv <0x288ea511>
+			streams:   5, words:  2044
+		worklib.counter:sv <0x02dee4f6>
+			streams:  13, words:  3350
+		worklib.synth_wrapper:sv <0x52e4a731>
+			streams:   5, words:  1523
+		worklib.counter_tb:sv <0x745685fe>
+			streams:   6, words:  3032
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                  Instances  Unique
+		Modules:                 18       7
+		Primitives:              56       4
+		Registers:               22      17
+		Scalar wires:            28       -
+		Expanded wires:          24       6
+		Vectored wires:          11       -
+		Always blocks:            2       2
+		Initial blocks:           2       2
+		Cont. assignments:        1       1
+		Pseudo assignments:      34      26
+		Simulation timescale:  10ps
+	Writing initial simulation snapshot: worklib.counter_tb:sv
+xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+
+-------------------------------------
+Relinquished control to SimVision...
+xcelium> 
+xcelium> source /opt/cadence/XCELIUM2009/tools/xcelium/files/xmsimrc
+xcelium> database -open waves -into waves.shm -default
+Created default SHM database waves
+xcelium> probe -create -shm counter_tb.clk_i counter_tb.data_o counter_tb.ok counter_tb.rst_ni counter_tb.sel_i
+Created probe 1
+xcelium> run
+Simulation interrupted at 33449826050 NS + 0
+xcelium> exit
+TOOL:	xrun(64)	20.09-s001: Exiting on May 26, 2024 at 11:35:56 EDT  (total: 00:05:56)
